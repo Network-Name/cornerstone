@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cornerstone">
+    <output-path>$PROJECT_DIR$/../Archive</output-path>
+    <root id="archive" name="cornerstone.jar">
+      <element id="module-output" name="cornerstone" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Support/json-20220924.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
