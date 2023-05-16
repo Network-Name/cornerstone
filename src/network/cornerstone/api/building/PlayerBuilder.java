@@ -25,4 +25,8 @@ public class PlayerBuilder {
         endUser.placeholderMaps.get(0).put(key, value);
         return this;
     }
+
+    public EndUser getLegacy() {
+        return endUser;
+    }
 }

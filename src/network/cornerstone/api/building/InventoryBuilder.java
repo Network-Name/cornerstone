@@ -2,6 +2,7 @@ package network.cornerstone.api.building;
 
 import network.cornerstone.system.factory.ItemTemplate;
 import network.cornerstone.system.opener.CornerstoneInventory;
+import network.cornerstone.system.opener.InventoryModifier;
 import org.bukkit.event.inventory.InventoryType;
 
 public class InventoryBuilder {
@@ -32,5 +33,9 @@ public class InventoryBuilder {
 
     public InventoryBuilder place(int slot, ItemBuilder builder) {
         return place(slot, builder.template);
+    }
+
+    public CornerstoneInventory getLegacy() {
+        return prototype;
     }
 }

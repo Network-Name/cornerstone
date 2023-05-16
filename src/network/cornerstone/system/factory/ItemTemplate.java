@@ -1,21 +1,26 @@
 package network.cornerstone.system.factory;
 
+import network.cornerstone.system.helpers.events.ExpectedResponse;
+import network.cornerstone.system.helpers.events.ProvidedData;
 import network.cornerstone.system.helpers.types.AcceptDenyApplication;
 import network.cornerstone.system.helpers.LoreTool;
 import network.cornerstone.system.helpers.Placeholders;
 import network.cornerstone.system.helpers.Translator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ItemTemplate extends AcceptDenyApplication {
     public Material material;
     public String rawName = "";
     public String rawLore = "";
+    public LinkedHashMap<ClickType, ExpectedResponse> actions = new LinkedHashMap<>();
 
     public ItemTemplate(Material material) {
         this.material = material;
@@ -38,5 +43,9 @@ public class ItemTemplate extends AcceptDenyApplication {
         meta.setLore(lore);
         generated.setItemMeta(meta);
         return generated;
+    }
+
+    public void runAction(ProvidedData data) {
+        actions.getOrDefault(data.clickType, ExpectedResponse.DEFAULT).run(data);
     }
 }
